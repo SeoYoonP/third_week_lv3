@@ -1,6 +1,6 @@
-package com.example.springassignmentlv3.course.entity;
+package com.example.springassignmentlv3.instructor.entity;
 
-import com.example.springassignmentlv3.course.dto.InstructorRequestDto;
+import com.example.springassignmentlv3.instructor.dto.InstructorRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

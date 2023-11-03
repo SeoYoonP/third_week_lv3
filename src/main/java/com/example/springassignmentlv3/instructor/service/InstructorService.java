@@ -1,9 +1,9 @@
-package com.example.springassignmentlv3.course.service;
+package com.example.springassignmentlv3.instructor.service;
 
-import com.example.springassignmentlv3.course.dto.InstructorRequestDto;
-import com.example.springassignmentlv3.course.dto.InstructorResponseDto;
-import com.example.springassignmentlv3.course.entity.Instructor;
-import com.example.springassignmentlv3.course.repository.InstructorRepository;
+import com.example.springassignmentlv3.instructor.dto.InstructorRequestDto;
+import com.example.springassignmentlv3.instructor.dto.InstructorResponseDto;
+import com.example.springassignmentlv3.instructor.entity.Instructor;
+import com.example.springassignmentlv3.instructor.repository.InstructorRepository;
 import com.example.springassignmentlv3.exception.CustomException;
 import com.example.springassignmentlv3.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;

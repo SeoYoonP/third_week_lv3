@@ -1,6 +1,6 @@
-package com.example.springassignmentlv3.course.dto;
+package com.example.springassignmentlv3.instructor.dto;
 
-import com.example.springassignmentlv3.course.entity.Instructor;
+import com.example.springassignmentlv3.instructor.entity.Instructor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

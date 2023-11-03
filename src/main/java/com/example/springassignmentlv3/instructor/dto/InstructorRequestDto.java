@@ -1,4 +1,4 @@
-package com.example.springassignmentlv3.course.dto;
+package com.example.springassignmentlv3.instructor.dto;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

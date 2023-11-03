@@ -1,6 +1,6 @@
-package com.example.springassignmentlv3.course.repository;
+package com.example.springassignmentlv3.instructor.repository;
 
-import com.example.springassignmentlv3.course.entity.Instructor;
+import com.example.springassignmentlv3.instructor.entity.Instructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
