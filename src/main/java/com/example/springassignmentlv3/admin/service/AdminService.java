@@ -26,7 +26,7 @@ public class AdminService {
         String password = passwordEncoder.encode(adminRequestDto.getPassword());
         AdminRoleEnum roleEnum = determineRoleByDepartment(department);
 
-        /** 유효성 검사 */
+        /* 유효성 검사 */
         validateEmail(email);
         validateDepartment(department);
 
