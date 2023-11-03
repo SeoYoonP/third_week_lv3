@@ -1,12 +1,11 @@
-package com.example.springassignmentlv3.service;
+package com.example.springassignmentlv3.admin.service;
 
-import com.example.springassignmentlv3.dto.AdminRequestDto;
-import com.example.springassignmentlv3.dto.LoginRequestDto;
-import com.example.springassignmentlv3.entity.Admin;
-import com.example.springassignmentlv3.entity.AdminRoleEnum;
+import com.example.springassignmentlv3.admin.dto.AdminRequestDto;
+import com.example.springassignmentlv3.admin.entity.Admin;
+import com.example.springassignmentlv3.admin.entity.AdminRoleEnum;
 import com.example.springassignmentlv3.exception.CustomException;
 import com.example.springassignmentlv3.exception.ErrorCode;
-import com.example.springassignmentlv3.repository.AdminRepository;
+import com.example.springassignmentlv3.admin.repository.AdminRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

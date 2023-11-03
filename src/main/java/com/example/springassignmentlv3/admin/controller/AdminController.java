@@ -1,9 +1,8 @@
-package com.example.springassignmentlv3.controller;
+package com.example.springassignmentlv3.admin.controller;
 
-import com.example.springassignmentlv3.dto.AdminRequestDto;
-import com.example.springassignmentlv3.dto.LoginRequestDto;
-import com.example.springassignmentlv3.dto.SuccessMessageDto;
-import com.example.springassignmentlv3.service.AdminService;
+import com.example.springassignmentlv3.admin.dto.AdminRequestDto;
+import com.example.springassignmentlv3.global.dto.SuccessMessageDto;
+import com.example.springassignmentlv3.admin.service.AdminService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

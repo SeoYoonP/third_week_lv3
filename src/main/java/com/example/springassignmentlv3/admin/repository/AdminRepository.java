@@ -1,6 +1,6 @@
-package com.example.springassignmentlv3.repository;
+package com.example.springassignmentlv3.admin.repository;
 
-import com.example.springassignmentlv3.entity.Admin;
+import com.example.springassignmentlv3.admin.entity.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

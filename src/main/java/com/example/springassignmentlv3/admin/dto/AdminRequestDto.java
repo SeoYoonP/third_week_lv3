@@ -1,4 +1,4 @@
-package com.example.springassignmentlv3.dto;
+package com.example.springassignmentlv3.admin.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -1,7 +1,7 @@
 package com.example.springassignmentlv3.security.impl;
 
-import com.example.springassignmentlv3.entity.Admin;
-import com.example.springassignmentlv3.repository.AdminRepository;
+import com.example.springassignmentlv3.admin.entity.Admin;
+import com.example.springassignmentlv3.admin.repository.AdminRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

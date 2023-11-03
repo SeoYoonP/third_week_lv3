@@ -1,8 +1,8 @@
 package com.example.springassignmentlv3.security.Filter;
 
-import com.example.springassignmentlv3.dto.LoginRequestDto;
-import com.example.springassignmentlv3.dto.SuccessMessageDto;
-import com.example.springassignmentlv3.entity.AdminRoleEnum;
+import com.example.springassignmentlv3.admin.dto.LoginRequestDto;
+import com.example.springassignmentlv3.global.dto.SuccessMessageDto;
+import com.example.springassignmentlv3.admin.entity.AdminRoleEnum;
 import com.example.springassignmentlv3.exception.ErrorCode;
 import com.example.springassignmentlv3.security.impl.AdminDetailsImpl;
 import com.example.springassignmentlv3.security.jwt.JwtUtil;

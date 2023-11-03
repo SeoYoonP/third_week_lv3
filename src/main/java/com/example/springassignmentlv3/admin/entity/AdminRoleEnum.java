@@ -1,4 +1,4 @@
-package com.example.springassignmentlv3.entity;
+package com.example.springassignmentlv3.admin.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

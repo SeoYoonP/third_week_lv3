@@ -1,4 +1,4 @@
-package com.example.springassignmentlv3.dto;
+package com.example.springassignmentlv3.global.dto;
 
 import lombok.Getter;
 

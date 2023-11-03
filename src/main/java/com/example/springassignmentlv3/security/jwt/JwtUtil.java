@@ -1,6 +1,6 @@
 package com.example.springassignmentlv3.security.jwt;
 
-import com.example.springassignmentlv3.entity.AdminRoleEnum;
+import com.example.springassignmentlv3.admin.entity.AdminRoleEnum;
 import com.example.springassignmentlv3.exception.CustomException;
 import com.example.springassignmentlv3.exception.ErrorCode;
 import io.jsonwebtoken.*;

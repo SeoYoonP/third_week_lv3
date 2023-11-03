@@ -1,4 +1,4 @@
-package com.example.springassignmentlv3.config;
+package com.example.springassignmentlv3.global.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

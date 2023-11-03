@@ -1,4 +1,4 @@
-package com.example.springassignmentlv3.config;
+package com.example.springassignmentlv3.global.config;
 
 
 import com.example.springassignmentlv3.security.Filter.JwtAuthenticationFilter;
