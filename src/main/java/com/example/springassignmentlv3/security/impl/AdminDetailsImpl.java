@@ -2,9 +2,6 @@ package com.example.springassignmentlv3.security.impl;
 
 import com.example.springassignmentlv3.entity.Admin;
 import com.example.springassignmentlv3.entity.AdminRoleEnum;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

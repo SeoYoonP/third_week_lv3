@@ -9,6 +9,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,7 +23,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.net.URLDecoder;
 
-
+@Slf4j(topic = "인가 확인")
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtAuthorizationFilter.class);
@@ -36,9 +37,19 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain) throws ServletException, IOException {
+        String path = req.getRequestURI();
+
+        // 로그인 및 회원가입 요청 시 필터 적용을 건너뛰기
+        if (path.equals("/api/admin/login") || path.equals("/api/admin/signup")) {
+            filterChain.doFilter(req, res);
+            return;
+        }
+
         try {
-            if (req.getHeader(JwtUtil.ACCESSTOKEN_HEADER) == null)
+            if (req.getHeader(JwtUtil.ACCESSTOKEN_HEADER) == null){
+                log.info("오류발생");
                 throw new CustomException(ErrorCode.NOT_FOUND_TOKEN);
+            }
             String token = URLDecoder.decode(req.getHeader(JwtUtil.ACCESSTOKEN_HEADER), "UTF-8");
 
             if (StringUtils.hasText(token) && token != null) {

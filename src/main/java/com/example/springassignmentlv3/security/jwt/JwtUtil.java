@@ -46,12 +46,12 @@ public class JwtUtil {
     }
 
     // 엑세스 토큰 생성
-    public String createAccessToken(String nickname, AdminRoleEnum role) {
+    public String createAccessToken(String email, AdminRoleEnum role) {
         Date date = new Date();
 
         return BEARER_PREFIX +
                 Jwts.builder()
-                        .setSubject(nickname)
+                        .setSubject(email)
                         .claim(AUTHORIZATION_KEY, role)
                         .setExpiration(new Date(date.getTime() + ACCESSTOKEN_TIME))
                         .setIssuedAt(date)
@@ -60,12 +60,12 @@ public class JwtUtil {
     }
 
     // 리프세쉬 토큰 생성
-    public String createRefreshToken(String nickname) {
+    public String createRefreshToken(String email) {
         Date date = new Date();
 
         return BEARER_PREFIX +
                 Jwts.builder()
-                        .setSubject(nickname)
+                        .setSubject(email)
                         .setExpiration(new Date(date.getTime() + REFRESHTOKEN_TIME))
                         .setIssuedAt(date)
                         .signWith(key, signatureAlgorithm)
