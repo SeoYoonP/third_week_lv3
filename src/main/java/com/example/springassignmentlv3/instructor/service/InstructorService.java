@@ -26,7 +26,7 @@ public class InstructorService {
         Instructor instructor = validateGetInstructor(instructorId);
         validatePhoneNumberOnUpdate(instructorId, instructorRequestDto.getPhoneNumber());
 
-        instructor.updateDetails(instructorRequestDto);
+        instructor.updateInstructorDetails(instructorRequestDto);
         Instructor updatedInstructor = instructorRepository.save(instructor);
         return new InstructorResponseDto(updatedInstructor);
     }

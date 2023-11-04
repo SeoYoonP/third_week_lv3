@@ -34,7 +34,7 @@ public class Instructor {
         this.bio = instructorRequestDto.getBio();
     }
 
-    public void updateDetails(InstructorRequestDto requestDto) {
+    public void updateInstructorDetails(InstructorRequestDto requestDto) {
         if (requestDto.getName() != null) {
             this.name = requestDto.getName();
         }

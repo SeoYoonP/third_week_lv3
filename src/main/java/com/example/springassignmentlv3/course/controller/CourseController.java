@@ -3,12 +3,10 @@ package com.example.springassignmentlv3.course.controller;
 import com.example.springassignmentlv3.course.dto.CourseRequestDto;
 import com.example.springassignmentlv3.course.dto.CourseResponseDto;
 import com.example.springassignmentlv3.course.service.CourseService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,4 +19,11 @@ public class CourseController {
     public CourseResponseDto registerCourse(@RequestBody CourseRequestDto courseRequestDto) {
         return courseService.registerCourse(courseRequestDto);
     }
+
+    @PatchMapping("/{courseId}/update")
+    @PreAuthorize("hasAnyRole('MANAGER')")
+    public CourseResponseDto reviseCourseDetails(@PathVariable Long courseId, @Valid @RequestBody CourseRequestDto courseRequestDto) {
+        return courseService.reviseCourseDetails(courseId, courseRequestDto);
+    }
+
 }

@@ -26,6 +26,18 @@ public class CourseService {
         return new CourseResponseDto(savedCourse, instructor.getName());
     }
 
+    public CourseResponseDto reviseCourseDetails(Long courseId, CourseRequestDto courseRequestDto) {
+        Instructor instructor = validateGetInstructor(courseRequestDto.getInstructorId());
+        Course course = validateGetCourse(courseId);
+        course.updateCourseDetails(courseRequestDto);
+        Course updatedCourse = courseRepository.save(course);
+        return new CourseResponseDto(updatedCourse, instructor.getName());
+    }
+
+    private Course validateGetCourse(Long courseId) {
+        return courseRepository.findById(courseId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_COURSE));
+    }
+
     private Instructor validateGetInstructor(Long instructorId) {
         return instructorRepository.findById(instructorId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_INSTRUCTOR));
     }

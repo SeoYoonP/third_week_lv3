@@ -1,7 +1,6 @@
 package com.example.springassignmentlv3.course.entity;
 
 import com.example.springassignmentlv3.course.dto.CourseRequestDto;
-import com.example.springassignmentlv3.course.service.CourseService;
 import com.example.springassignmentlv3.instructor.entity.Instructor;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -41,5 +39,21 @@ public class Course {
         this.category = category;
         this.instructor = instructor;
         this.registrationDate = LocalDate.now();
+    }
+
+
+    public void updateCourseDetails(CourseRequestDto courseRequestDto) {
+        if (courseRequestDto.getTitle() != null) {
+            this.title = courseRequestDto.getTitle();
+        }
+        if (courseRequestDto.getPrice() >= 0) {
+            this.price = courseRequestDto.getPrice();
+        }
+        if (courseRequestDto.getDescription() != null) {
+            this.description = courseRequestDto.getDescription();
+        }
+        if (courseRequestDto.getCategory() != null) {
+            this.category = courseRequestDto.getCategory();
+        }
     }
 }
