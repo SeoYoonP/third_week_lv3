@@ -17,7 +17,6 @@ import java.util.List;
 @RequestMapping("/api/courses")
 public class CourseController {
     private final CourseService courseService;
-    private final CourseRepository courseRepository;
 
     @PostMapping("/register")
     @PreAuthorize("hasAnyRole('MANAGER', 'STAFF')")
@@ -37,9 +36,9 @@ public class CourseController {
         return courseService.getCoursesFromSelectedInstructor(instructorId);
     }
 
-    @GetMapping("/category/{category}")
+    @GetMapping("/category")
     @PreAuthorize("hasAnyRole('MANAGER', 'STAFF')")
-    public List<CourseResponseDto> getCoursesByCategory(@PathVariable CourseCategory category) {
+    public List<CourseResponseDto> getCoursesByCategory(@RequestParam("category") CourseCategory category) {
         return courseService.getCoursesByCategory(category);
     }
 
