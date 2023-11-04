@@ -37,9 +37,12 @@ public class CourseService {
     public List<CourseResponseDto> getCoursesFromSelectedInstructor(Long instructorId) {
         Instructor instructor = validateGetInstructor(instructorId);
         List<Course> courses = courseRepository.findByInstructorOrderByRegistrationDateDesc(instructor);
-        return courses.stream()
-                .map(course -> new CourseResponseDto(course, instructor.getName()))
-                .toList();
+        return convertToCourseResponseDtoList(courses);
+    }
+
+    public List<CourseResponseDto> getCoursesByCategory(CourseCategory category) {
+        List<Course> courses = courseRepository.findByCategoryOrderByRegistrationDateDesc(category);
+        return convertToCourseResponseDtoList(courses);
     }
 
     public CourseResponseDto reviseCourseDetails(Long courseId, CourseRequestDto courseRequestDto) {
@@ -64,6 +67,10 @@ public class CourseService {
                 .orElseThrow(() -> new CustomException(ErrorCode.INVALID_CATEGORY));
     }
 
-
-
+    // Course 리스트를 CourseResponseDto 리스트로 변환하는 공통 메소드
+    private List<CourseResponseDto> convertToCourseResponseDtoList(List<Course> courses) {
+        return courses.stream()
+                .map(CourseResponseDto::new)
+                .toList();
+    }
 }

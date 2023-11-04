@@ -2,6 +2,7 @@ package com.example.springassignmentlv3.course.controller;
 
 import com.example.springassignmentlv3.course.dto.CourseRequestDto;
 import com.example.springassignmentlv3.course.dto.CourseResponseDto;
+import com.example.springassignmentlv3.course.entity.CourseCategory;
 import com.example.springassignmentlv3.course.repository.CourseRepository;
 import com.example.springassignmentlv3.course.service.CourseService;
 import jakarta.validation.Valid;
@@ -36,6 +37,11 @@ public class CourseController {
         return courseService.getCoursesFromSelectedInstructor(instructorId);
     }
 
+    @GetMapping("/category/{category}")
+    @PreAuthorize("hasAnyRole('MANAGER', 'STAFF')")
+    public List<CourseResponseDto> getCoursesByCategory(@PathVariable CourseCategory category) {
+        return courseService.getCoursesByCategory(category);
+    }
 
     @PatchMapping("/{courseId}/update")
     @PreAuthorize("hasAnyRole('MANAGER')")

@@ -26,4 +26,14 @@ public class CourseResponseDto {
         this.instructorName = instructorName;
         this.registrationDate = savedCourse.getRegistrationDate();
     }
+
+    public CourseResponseDto(Course course) {
+        this.id = course.getId();
+        this.title = course.getTitle();
+        this.price = course.getPrice();
+        this.description = course.getDescription();
+        this.category = course.getCategory();
+        this.instructorName = course.getInstructor().getName();
+        this.registrationDate = course.getRegistrationDate();
+    }
 }
