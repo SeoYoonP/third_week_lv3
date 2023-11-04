@@ -5,9 +5,11 @@ import com.example.springassignmentlv3.course.dto.CourseResponseDto;
 import com.example.springassignmentlv3.course.entity.CourseCategory;
 import com.example.springassignmentlv3.course.repository.CourseRepository;
 import com.example.springassignmentlv3.course.service.CourseService;
+import com.example.springassignmentlv3.global.dto.SuccessMessageDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,4 +50,10 @@ public class CourseController {
         return courseService.reviseCourseDetails(courseId, courseRequestDto);
     }
 
+    @DeleteMapping("/{courseId}")
+    @PreAuthorize("hasAnyRole('MANAGER')")
+    public SuccessMessageDto deleteCourse(@PathVariable Long courseId) {
+        courseService.deleteCourse(courseId);
+        return new SuccessMessageDto("해당 강의가 삭제되었습니다.");
+    }
 }

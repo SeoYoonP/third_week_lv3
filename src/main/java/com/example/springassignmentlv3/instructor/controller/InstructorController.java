@@ -1,5 +1,6 @@
 package com.example.springassignmentlv3.instructor.controller;
 
+import com.example.springassignmentlv3.global.dto.SuccessMessageDto;
 import com.example.springassignmentlv3.instructor.dto.InstructorRequestDto;
 import com.example.springassignmentlv3.instructor.dto.InstructorResponseDto;
 import com.example.springassignmentlv3.instructor.service.InstructorService;
@@ -30,5 +31,12 @@ public class InstructorController {
     @PreAuthorize("hasAnyRole('MANAGER')")
     public InstructorResponseDto reviseInstructorDetails(@PathVariable Long instructorId, @Valid @RequestBody InstructorRequestDto instructorRequestDto) {
         return instructorService.reviseInstructorDetails(instructorId, instructorRequestDto);
+    }
+
+    @DeleteMapping("/{instructorId}")
+    @PreAuthorize("hasAnyRole('MANAGER')")
+    public SuccessMessageDto deleteInstructor(@PathVariable Long instructorId) {
+        instructorService.deleteInstructor(instructorId);
+        return new SuccessMessageDto("해당 강사와 강의들이 삭제되었습니다");
     }
 }

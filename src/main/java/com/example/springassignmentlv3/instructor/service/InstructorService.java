@@ -36,6 +36,11 @@ public class InstructorService {
         return new InstructorResponseDto(updatedInstructor);
     }
 
+    public void deleteInstructor(Long instructorId) {
+        Instructor instructor = validateGetInstructor(instructorId);
+        instructorRepository.delete(instructor);
+    }
+
     // 강사 유효성 검증: 주어진 ID의 강사가 데이터베이스에 존재하는지 확인
     private Instructor validateGetInstructor(Long instructorId) {
         return instructorRepository.findById(instructorId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_INSTRUCTOR));
@@ -57,5 +62,6 @@ public class InstructorService {
                     }
                 });
     }
+
 
 }

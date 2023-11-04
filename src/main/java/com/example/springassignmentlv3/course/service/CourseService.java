@@ -7,6 +7,7 @@ import com.example.springassignmentlv3.course.entity.CourseCategory;
 import com.example.springassignmentlv3.course.repository.CourseRepository;
 import com.example.springassignmentlv3.exception.CustomException;
 import com.example.springassignmentlv3.exception.ErrorCode;
+import com.example.springassignmentlv3.global.dto.SuccessMessageDto;
 import com.example.springassignmentlv3.instructor.entity.Instructor;
 import com.example.springassignmentlv3.instructor.repository.InstructorRepository;
 import lombok.RequiredArgsConstructor;
@@ -51,6 +52,11 @@ public class CourseService {
         course.updateCourseDetails(courseRequestDto);
         Course updatedCourse = courseRepository.save(course);
         return new CourseResponseDto(updatedCourse, instructor.getName());
+    }
+
+    public void deleteCourse(Long courseId) {
+        Course course = validateGetCourse(courseId);
+        courseRepository.delete(course);
     }
 
     private Course validateGetCourse(Long courseId) {
