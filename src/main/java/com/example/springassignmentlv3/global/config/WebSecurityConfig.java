@@ -1,6 +1,8 @@
 package com.example.springassignmentlv3.global.config;
 
 
+import com.example.springassignmentlv3.exception.CustomAccessDeniedException;
+import com.example.springassignmentlv3.exception.CustomAccessDeniedHandler;
 import com.example.springassignmentlv3.security.Filter.JwtAuthenticationFilter;
 import com.example.springassignmentlv3.security.Filter.JwtAuthorizationFilter;
 import com.example.springassignmentlv3.security.impl.AdminDetailsServiceImpl;
@@ -12,7 +14,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -28,13 +29,13 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 @RequiredArgsConstructor
 @EnableMethodSecurity
-public class WebSecurityConfig {
+public class WebSecurityConfig{
 
     private final JwtUtil jwtUtil;
     private final AdminDetailsServiceImpl adminDetailsService;
     private final AuthenticationConfiguration authenticationConfiguration;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
@@ -59,6 +60,7 @@ public class WebSecurityConfig {
 
         http.cors().configurationSource(corsConfigurationSource());
         http.exceptionHandling((exceptionHandling) -> exceptionHandling.authenticationEntryPoint(jwtAuthenticationEntryPoint));
+//        http.exceptionHandling((exceptionHandling -> exceptionHandling.accessDeniedHandler(customAccessDeniedHandler)));
 
         // 기본 설정인 Session 방식은 사용하지 않고 JWT 방식을 사용하기 위한 설정
         http.sessionManagement((sessionManagement) ->

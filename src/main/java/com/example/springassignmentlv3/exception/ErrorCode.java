@@ -25,7 +25,8 @@ public enum ErrorCode {
     OUT_OF_RANGE(HttpStatus.BAD_REQUEST.value(), "요청한 페이지 범위가 적절하지 않습니다."),
     TOKEN_NOT_EXIST(HttpStatus.UNAUTHORIZED.value(), "이 기능을 사용하기 위해서는 로그인이 필요합니다."),
     ELEMENTS_IS_REQUIRED(HttpStatus.BAD_REQUEST.value(), "필수 입력 필드가 누락되었습니다."),
-    UNEXPECTED_ERROR(443, "예상치 못한 오류가 발생했습니다."), ;
+    ACCESS_DENIED(HttpStatus.FORBIDDEN.value(), "접근 권한이 없습니다."),
+    UNEXPECTED_ERROR(443, "예상치 못한 오류가 발생했습니다.");
 
     private final int httpStatus;
     private final String message;
