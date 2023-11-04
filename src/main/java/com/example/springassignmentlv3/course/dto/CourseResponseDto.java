@@ -1,0 +1,29 @@
+package com.example.springassignmentlv3.course.dto;
+
+import com.example.springassignmentlv3.course.entity.Course;
+import com.example.springassignmentlv3.course.entity.CourseCategory;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import java.time.LocalDate;
+@Getter
+@AllArgsConstructor
+public class CourseResponseDto {
+    private Long id;
+    private String title;
+    private Integer price;
+    private String description;
+    private CourseCategory category;
+    private String instructorName;
+    private LocalDate registrationDate;
+
+    public CourseResponseDto(Course savedCourse, String instructorName) {
+        this.id = savedCourse.getId();
+        this.title = savedCourse.getTitle();
+        this.price = savedCourse.getPrice();
+        this.description = savedCourse.getDescription();
+        this.category = savedCourse.getCategory();
+        this.instructorName = instructorName;
+        this.registrationDate = savedCourse.getRegistrationDate();
+    }
+}

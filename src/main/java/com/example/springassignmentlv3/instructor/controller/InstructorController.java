@@ -21,7 +21,7 @@ public class InstructorController {
     }
 
     @PatchMapping("/{instructorId}/update")
-    @PreAuthorize("hasAnyAuthority('MANAGER')")
+    @PreAuthorize("hasAnyRole('MANAGER')")
     public InstructorResponseDto reviseInstructorDetails(@PathVariable Long instructorId, @Valid @RequestBody InstructorRequestDto instructorRequestDto) {
         return instructorService.reviseInstructorDetails(instructorId, instructorRequestDto);
     }

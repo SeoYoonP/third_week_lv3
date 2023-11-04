@@ -23,7 +23,7 @@ public class InstructorService {
     }
 
     public InstructorResponseDto reviseInstructorDetails(Long instructorId, InstructorRequestDto instructorRequestDto) {
-        Instructor instructor = validateAndGetInstructor(instructorId);
+        Instructor instructor = validateGetInstructor(instructorId);
         validatePhoneNumberOnUpdate(instructorId, instructorRequestDto.getPhoneNumber());
 
         instructor.updateDetails(instructorRequestDto);
@@ -32,7 +32,7 @@ public class InstructorService {
     }
 
     // 강사 유효성 검증: 주어진 ID의 강사가 데이터베이스에 존재하는지 확인
-    private Instructor validateAndGetInstructor(Long instructorId) {
+    private Instructor validateGetInstructor(Long instructorId) {
         return instructorRepository.findById(instructorId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_INSTRUCTOR));
     }
 
