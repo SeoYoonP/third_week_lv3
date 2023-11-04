@@ -12,6 +12,8 @@ import com.example.springassignmentlv3.instructor.repository.InstructorRepositor
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CourseService {
@@ -24,6 +26,20 @@ public class CourseService {
         Course course = new Course(instructor, courseRequestDto, category);
         Course savedCourse = courseRepository.save(course);
         return new CourseResponseDto(savedCourse, instructor.getName());
+    }
+
+    public CourseResponseDto getCourseDetails(Long courseId) {
+        Course course = validateGetCourse(courseId);
+        Instructor instructor = course.getInstructor();
+        return new CourseResponseDto(course, instructor.getName());
+    }
+
+    public List<CourseResponseDto> getCoursesFromSelectedInstructor(Long instructorId) {
+        Instructor instructor = validateGetInstructor(instructorId);
+        List<Course> courses = courseRepository.findByInstructorOrderByRegistrationDateDesc(instructor);
+        return courses.stream()
+                .map(course -> new CourseResponseDto(course, instructor.getName()))
+                .toList();
     }
 
     public CourseResponseDto reviseCourseDetails(Long courseId, CourseRequestDto courseRequestDto) {
@@ -47,4 +63,7 @@ public class CourseService {
         return CourseCategory.getEnumIgnoreCase(categoryStr)
                 .orElseThrow(() -> new CustomException(ErrorCode.INVALID_CATEGORY));
     }
+
+
+
 }
