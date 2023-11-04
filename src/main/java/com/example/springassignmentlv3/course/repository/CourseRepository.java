@@ -12,4 +12,5 @@ import java.util.List;
 public interface CourseRepository extends JpaRepository<Course, Long> {
     List<Course> findByInstructorOrderByRegistrationDateDesc(Instructor instructor);
     List<Course> findByCategoryOrderByRegistrationDateDesc(CourseCategory category);
+    void deleteByInstructorId(Long instructorId);
 }

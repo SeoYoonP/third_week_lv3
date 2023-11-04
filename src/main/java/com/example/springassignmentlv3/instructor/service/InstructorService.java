@@ -1,11 +1,13 @@
 package com.example.springassignmentlv3.instructor.service;
 
+import com.example.springassignmentlv3.course.repository.CourseRepository;
 import com.example.springassignmentlv3.instructor.dto.InstructorRequestDto;
 import com.example.springassignmentlv3.instructor.dto.InstructorResponseDto;
 import com.example.springassignmentlv3.instructor.entity.Instructor;
 import com.example.springassignmentlv3.instructor.repository.InstructorRepository;
 import com.example.springassignmentlv3.exception.CustomException;
 import com.example.springassignmentlv3.exception.ErrorCode;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class InstructorService {
     private final InstructorRepository instructorRepository;
+    private final CourseRepository courseRepository;
 
     public InstructorResponseDto registerInstructor(InstructorRequestDto instructorRequestDto) {
         validatePhoneNumberOnCreate(instructorRequestDto.getPhoneNumber());
@@ -27,6 +30,7 @@ public class InstructorService {
         return new InstructorResponseDto(instructor);
     }
 
+    @Transactional
     public InstructorResponseDto reviseInstructorDetails(Long instructorId, InstructorRequestDto instructorRequestDto) {
         Instructor instructor = validateGetInstructor(instructorId);
         validatePhoneNumberOnUpdate(instructorId, instructorRequestDto.getPhoneNumber());
@@ -36,7 +40,9 @@ public class InstructorService {
         return new InstructorResponseDto(updatedInstructor);
     }
 
+    @Transactional
     public void deleteInstructor(Long instructorId) {
+        courseRepository.deleteByInstructorId(instructorId); //강사가 촬영한 강의들 삭제
         Instructor instructor = validateGetInstructor(instructorId);
         instructorRepository.delete(instructor);
     }
