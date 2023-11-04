@@ -22,6 +22,11 @@ public class InstructorService {
         return new InstructorResponseDto(registeredInstructor);
     }
 
+    public InstructorResponseDto getInstructorDetails(Long instructorId) {
+        Instructor instructor = validateGetInstructor(instructorId);
+        return new InstructorResponseDto(instructor);
+    }
+
     public InstructorResponseDto reviseInstructorDetails(Long instructorId, InstructorRequestDto instructorRequestDto) {
         Instructor instructor = validateGetInstructor(instructorId);
         validatePhoneNumberOnUpdate(instructorId, instructorRequestDto.getPhoneNumber());
@@ -52,4 +57,5 @@ public class InstructorService {
                     }
                 });
     }
+
 }

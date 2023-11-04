@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class InstructorResponseDto {
+    private Long id;
     private String name;
     private int experience;
     private String company;
@@ -14,6 +15,7 @@ public class InstructorResponseDto {
     private String bio;
 
     public InstructorResponseDto(Instructor saveInstructor) {
+        this.id = saveInstructor.getId();
         this.name = saveInstructor.getName();
         this.experience = saveInstructor.getExperience();
         this.company = saveInstructor.getCompany();

@@ -20,6 +20,12 @@ public class InstructorController {
         return instructorService.registerInstructor(instructorRequestDto);
     }
 
+    @GetMapping("/{instructorId}/")
+    @PreAuthorize("hasAnyRole('MANAGER', 'STAFF')")
+    public InstructorResponseDto getInstructor(@PathVariable Long instructorId) {
+        return instructorService.getInstructorDetails(instructorId);
+    }
+
     @PatchMapping("/{instructorId}/update")
     @PreAuthorize("hasAnyRole('MANAGER')")
     public InstructorResponseDto reviseInstructorDetails(@PathVariable Long instructorId, @Valid @RequestBody InstructorRequestDto instructorRequestDto) {
