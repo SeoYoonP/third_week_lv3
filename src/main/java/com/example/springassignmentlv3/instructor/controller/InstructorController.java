@@ -20,7 +20,7 @@ public class InstructorController {
         return instructorService.registerInstructor(instructorRequestDto);
     }
 
-    @GetMapping("/{instructorId}/")
+    @GetMapping("/{instructorId}")
     @PreAuthorize("hasAnyRole('MANAGER', 'STAFF')")
     public InstructorResponseDto getInstructor(@PathVariable Long instructorId) {
         return instructorService.getInstructorDetails(instructorId);
